@@ -13,18 +13,22 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
  let c=1;
+ const delta=(a) =>a.some(s=>Array.isArray(s)) 
+ 
 class DepthCalculator {
   
   calculateDepth(a) {
      
-    for(let b of a){
-      if(Array.isArray(b)){
-        a=a.flat();
-        c++
-        this.calculateDepth(a);
-      }
-    }
-    return c;
+    if(delta(a)){
+
+      c++;
+      a=a.flat();
+      this.calculateDepth(a);
+      
+     
+     
+    
+   } return c;
   } 
 }
 
